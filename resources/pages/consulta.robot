@@ -13,7 +13,7 @@ ${values}
 acesso grafico de preço
     Wait Until Element Is Visible    ${CONSULTA_BUTTON_GRAFICO}    50 
     Click Element                    ${CONSULTA_BUTTON_GRAFICO}    
-    sleep                            7
+    sleep                            9
     Capture Page Screenshot 
    # ${values}     Get Element Attribute        ${GRAFICO_PRECO}
     # Log To Console                   ${values}
