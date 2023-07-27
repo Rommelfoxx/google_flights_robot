@@ -15,27 +15,22 @@ acesso grafico de preço
     Click Element                    ${CONSULTA_BUTTON_GRAFICO}    
     sleep                            9
     Capture Page Screenshot 
-   # ${values}     Get Element Attribute        ${GRAFICO_PRECO}
-    # Log To Console                   ${values}
     
     #criando lista de valores 
-    
-    ${values}                        Get Element Count             ${GRAFICO_PRECO} 
+    #Qauntidade de itens no grafico
+    ${lista_numero_grafico}                        Get Element Count             ${GRAFICO_PRECO} 
     ${lista_objeto}    Create List    
     
     #Lista é criada no FOR 
-    FOR    ${index}    IN RANGE    2    ${values}    7 
-
+    FOR    ${index}    IN RANGE    2    ${lista_numero_grafico}    7 
     ${data}     Get Element Attribute    (//*[@series-id='price graph'] //child::*)[${index}]    data-id
     ${valor}    Get Element Attribute    (//*[@series-id='price graph'] //child::*)[${index}]    data-rect
     #Lista é organizado por indice e valor
     ${novoValor}    Split String   ${valor}   ,
     ${valorFinal}    Set Variable    ${novoValor[-1]} 
     ${valorFinal}    Evaluate   abs(${valorFinal})
-
     ${objeto}    Create Dictionary    indice=${index}    valor=${valorFinal} 
     Append To List    ${lista_objeto}    ${objeto} 
-
     END
 
     #Ordenar por menor valor lista final 
@@ -45,12 +40,10 @@ acesso grafico de preço
     
 
     #Captura valores dos menores e data de partida e chegada 
-    sleep   3
     ${lista_preco}    Create List  
 
     FOR    ${index}    IN RANGE    0    4
-
-    Log To Console    ${lista_ordenada[${index}].indice}
+    # Log To Console    ${lista_ordenada[${index}].indice}
     Wait Until Element Is Enabled     (//*[@series-id='price graph'] //child::*)[${lista_ordenada[${index}].indice}] 
     Click Element   (//*[@series-id='price graph'] //child::*)[${lista_ordenada[${index}].indice}] 
 
@@ -63,9 +56,12 @@ acesso grafico de preço
 
     END
 
-    # Log To Console     ${lista_preco} 
+
+    #apresentação dos resultados 
+    ${numero_dias _consulta}    Evaluate    ${lista_numero_grafico}/7
+    Log To Console   Consulta realizada para ${numero_dias _consulta} dias de viagem 
     FOR    ${index}    IN RANGE    0    4
-    Log To Console    "A data é " ${lista_preco[${index}].data} "e o preço" ${lista_preco[${index}].preco}
+    Log To Console    A data é ${lista_preco[${index}].data} e o preço ${lista_preco[${index}].preco}
 
     END 
 
