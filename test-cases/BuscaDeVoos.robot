@@ -16,4 +16,21 @@ Cenario 1 - Procura de preços de voos
    #Então 
    é informado preço mais baixo 
    acesso grafico de preço 
+   captura dos valores do grafico 
+   apresentacao dos valores 
+   clicar menos 1 dia 
+   captura dos valores do grafico
+   apresentacao dos valores 
+   clicar menos 1 dia 
+   captura dos valores do grafico
+   apresentacao dos valores 
+   clicar menos 1 dia 
+   captura dos valores do grafico
+   apresentacao dos valores 
+   clicar menos 1 dia 
+   captura dos valores do grafico
+   apresentacao dos valores 
+   clicar menos 1 dia 
+   captura dos valores do grafico
+   apresentacao dos valores 
 
