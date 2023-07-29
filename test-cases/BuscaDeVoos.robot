@@ -12,25 +12,10 @@ Cenario 1 - Procura de preços de voos
    #Dado 
    que eu tenha acessado o Google Fight 
    #Quando 
-   Consultar informações de voo de "São Paulo" para "Paris" 
-   #Então 
+   Consultar informações de voo de "São Paulo" para "Paris" nas datas "10 fevereiro 2024" "10 abril 2024" 
    é informado preço mais baixo 
-   acesso grafico de preço 
-   captura dos valores do grafico 
-   apresentacao dos valores 
-   clicar menos 1 dia 
-   captura dos valores do grafico
-   apresentacao dos valores 
-   clicar menos 1 dia 
-   captura dos valores do grafico
-   apresentacao dos valores 
-   clicar menos 1 dia 
-   captura dos valores do grafico
-   apresentacao dos valores 
-   clicar menos 1 dia 
-   captura dos valores do grafico
-   apresentacao dos valores 
-   clicar menos 1 dia 
-   captura dos valores do grafico
-   apresentacao dos valores 
+   acesso grafico de preço
+
+   #Então 
+   pesquisa de "5" menos 
 
