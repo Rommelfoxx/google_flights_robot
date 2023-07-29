@@ -1,6 +1,9 @@
 name: Pesquisa de preço de passagens 
 
-on: workflow_dispatch
+on: 
+   workflow_dispatch:
+   schedule:
+      - cron: '0 8,16,22,3 * * *'
 
 jobs:
   run_automation:
