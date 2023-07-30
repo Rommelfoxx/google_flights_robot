@@ -42,9 +42,19 @@ jobs:
       with:
         name: reports
         path: valores.txt          
-    - name: Criar relatorio 
-      uses: michaelhenry/create-report@v2.0.2
-      with:
-        title: report 
-        path:  valores.txt  
+  
+  
+  
 
+
+  generate_report:
+        if: always()
+        needs: [run_automation] 
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Download reports
+          uses: actions/download-artifact@v1
+          with:
+            name: reports
+            path: valores.txt  
