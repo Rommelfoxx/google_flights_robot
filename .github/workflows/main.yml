@@ -43,5 +43,17 @@ jobs:
         name: reports
         path: valores.txt
         
-
-  
+  generate_report:
+        if: always()
+        needs: [run_automation] 
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Download reports
+          uses: actions/download-artifact@v1
+          with:
+            name: reports
+        - name: Send report to commit
+          uses: joonvena/robotframework-reporter-action@v2
+          with:
+            gh_access_token: ${{ secrets.GITHUB_TOKEN }}       
