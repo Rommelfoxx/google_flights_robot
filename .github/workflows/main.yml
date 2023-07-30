@@ -41,11 +41,7 @@ jobs:
       if: always()
       with:
         name: reports
-        path: reports
+        path: valores.txt
         
-    - name: Upload report resultado
-      uses: action/upload-artifact@v3
-      with:
-         name: teste report 
-         path: valores.txt
+
   
