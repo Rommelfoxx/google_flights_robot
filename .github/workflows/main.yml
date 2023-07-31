@@ -58,4 +58,4 @@ jobs:
           name: create report from markdown
           with:
                title: reports
-               path: valores.txt 
+               body-file: valores.txt 
