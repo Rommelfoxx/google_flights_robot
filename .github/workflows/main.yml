@@ -43,10 +43,6 @@ jobs:
         name: reports
         path: valores.txt          
   
-  
-  
-
-
   generate_report:
         if: always()
         needs: [run_automation] 
@@ -58,3 +54,9 @@ jobs:
           with:
             name: reports
             path: valores.txt  
+        - uses: michaelhenry/create-report@v2.0.2
+          name: create report from markdown
+          with:
+               title: reports
+               path: valores.txt 
+               format: markdown
