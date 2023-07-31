@@ -41,7 +41,7 @@ jobs:
       if: always()
       with:
         name: reports
-        path: valores.txt          
+        path: valores.md          
   
   generate_report:
         if: always()
@@ -53,9 +53,9 @@ jobs:
           uses: actions/download-artifact@v1
           with:
             name: reports
-            path: valores.txt  
+            path: valores.md  
         - uses: dtinth/markdown-report-action@v1.0.0
           name: create report from markdown
           with:
                title: reports
-               body-file: valores.txt 
+               body-file: valores.md
