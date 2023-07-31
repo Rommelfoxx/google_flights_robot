@@ -36,7 +36,14 @@ jobs:
       run: |
             mkdir results
             robot -d ./reports ./test-cases   
-  
+    
+    - name: Upload test results
+      uses: actions/upload-artifact@v1
+      if: always()
+      with:
+        name: reports
+        path: valores.md  
+    
     - uses: dtinth/markdown-report-action@v1.0.0
       name: create report from markdown
       with:
