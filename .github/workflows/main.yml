@@ -54,9 +54,8 @@ jobs:
           with:
             name: reports
             path: valores.txt  
-        - uses: michaelhenry/create-report@v2.0.2
+        - uses: dtinth/markdown-report-action@v1.0.0
           name: create report from markdown
           with:
                title: reports
                path: valores.txt 
-               format: markdown
