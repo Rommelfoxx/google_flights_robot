@@ -57,3 +57,4 @@ jobs:
         report_name: valores.md  
         report_title: report 
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        skip_check_run: true
