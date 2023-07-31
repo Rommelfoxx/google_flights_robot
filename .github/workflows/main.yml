@@ -35,25 +35,13 @@ jobs:
     - name: Run Tests
       run: |
             mkdir results
-            robot -d ./reports ./test-cases
-    - name: Upload test results
-      uses: actions/upload-artifact@v1
-      if: always()
-      with:
-        name: reports
-        path: valores.md          
+            robot -d ./reports ./test-cases   
   
   generate_report:
         if: always()
         needs: [run_automation] 
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@v2
-        - name: Download reports
-          uses: actions/download-artifact@v1
-          with:
-            name: reports
-            path: valores.md  
         - uses: dtinth/markdown-report-action@v1.0.0
           name: create report from markdown
           with:
