@@ -85,5 +85,5 @@ pesquisa de "${dias}" menos
 
 write_variable_in_file
     [Arguments]       ${variable}
-    Append To File    ${EXECDIR}/valores.txt    \n${variable}
+    Append To File    ${EXECDIR}/valores.md    \n${variable}
 
