@@ -37,13 +37,8 @@ jobs:
             mkdir results
             robot -d ./reports ./test-cases   
   
-  generate_report:
-        if: always()
-        needs: [run_automation] 
-        runs-on: ubuntu-latest
-        steps:
-        - uses: dtinth/markdown-report-action@v1.0.0
-          name: create report from markdown
-          with:
+    - uses: dtinth/markdown-report-action@v1.0.0
+      name: create report from markdown
+      with:
                title: reports
                body-file: README.md
