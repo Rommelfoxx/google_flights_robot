@@ -46,4 +46,4 @@ jobs:
           name: create report from markdown
           with:
                title: reports
-               body-file: valores.md
+               body-file: README.md
