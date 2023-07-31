@@ -44,8 +44,16 @@ jobs:
         name: reports
         path: valores.md  
     
-    - uses: dtinth/markdown-report-action@v1.0.0
-      name: create report from markdown
+#     - uses: dtinth/markdown-report-action@v1.0.0
+#       name: create report from markdown
+#       with:
+#                title: reports
+#                body-file: valores.md
+               
+    - name: markdown-reporter
+      uses: PavanMudigonda/markdown-reporter@v0.1
       with:
-               title: reports
-               body-file: valores.md
+        markdown_path: valores.md 
+        report_name: valores.md  
+        report_title: report 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
