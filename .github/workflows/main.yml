@@ -55,8 +55,9 @@ jobs:
       with:
           to: -859348472
           token: 6549097027:AAGZAs99MkBOgpaQLvq3V0rO-7TimDEoMw0
-          message: valores.md
+          message: Pesquisa de passagens realizada com sucesso! 
           message_file: valores.md
+          format: markdown 
                
 #     - name: markdown-reporter
 #       uses: PavanMudigonda/markdown-reporter@v0.1
