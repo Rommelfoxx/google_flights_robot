@@ -44,7 +44,7 @@ captura dos valores do grafico
     ${lista_ordenada}                ordenar_por_valor                                                                  ${lista_objeto}                              
     #Captura valores dos menores e data de partida e chegada
     ${lista_preco}                   Create List                                                                        
-    FOR                              ${index}                                                                           IN RANGE                                     0    4
+    FOR                              ${index}                                                                           IN RANGE                                     0    5
     # Log To Console    ${lista_ordenada[${index}].indice}
     Wait Until Element Is Enabled    (//*[@series-id='price graph'] //child::*)[${lista_ordenada[${index}].indice}] 
     Click Element                    (//*[@series-id='price graph'] //child::*)[${lista_ordenada[${index}].indice}] 
