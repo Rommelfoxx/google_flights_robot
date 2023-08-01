@@ -58,10 +58,9 @@ jobs:
           message: |
             ${{ github.actor }} created commit:
             Commit message: ${{ github.event.commits[0].message }}
-            
             Repository: ${{ github.repository }}
-            
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          document: valores.md
                
 #     - name: markdown-reporter
 #       uses: PavanMudigonda/markdown-reporter@v0.1
