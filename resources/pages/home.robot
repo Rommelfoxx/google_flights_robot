@@ -23,7 +23,6 @@ Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}
     Input Text                       ${HOME_INPUT_SEARCH_TO}    ${to}    True
     sleep                            1
 
-
     Wait Until Element Is Enabled   ${HOME_INPUT_LIST}    
     Click Element                    ${HOME_INPUT_LIST}    
 

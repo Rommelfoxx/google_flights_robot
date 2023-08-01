@@ -5,6 +5,12 @@ Resource   ../resources/pages/consulta.robot
 Suite Setup       Abrir navegador
 Suite Teardown    Close Browser   
 
+*** Variables ***
+${TO}
+${FROM}
+${DEPARTURE}
+${ARRIVAL}
+
 
 *** Test Cases ***
 
@@ -12,7 +18,7 @@ Cenario 1 - Procura de preços de voos
    #Dado 
    que eu tenha acessado o Google Fight 
    #Quando 
-   Consultar informações de voo de "São Paulo" para "Paris" nas datas "10 fevereiro 2024" "10 abril 2024" 
+   Consultar informações de voo de "${FROM}" para "${TO}" nas datas "${DEPARTURE}" "${ARRIVAL}" 
    é informado preço mais baixo 
    acesso grafico de preço
 

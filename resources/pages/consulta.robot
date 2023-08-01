@@ -15,7 +15,6 @@ ${values}
 ${LISTA_PRECO}    Create List    
 
 *** Keywords ***
-
 acesso grafico de preço
     Wait Until Element Is Visible    ${CONSULTA_BUTTON_GRAFICO}    50 
     Click Element                    ${CONSULTA_BUTTON_GRAFICO}    
@@ -64,9 +63,10 @@ apresentacao dos valores
     ${numero_dias _consulta}    Get Text    ${CONSULTAR_TEXT_DIAS} 
 
     Log To Console            Consulta realizada para ${numero_dias _consulta}
-    write_variable_in_file    Consulta realizada para ${numero_dias _consulta}    
+    write_variable_in_file    Consulta realizada para ${numero_dias _consulta}   
+
     FOR                       ${index}                                            IN RANGE                                                                           0    4
-    ${arquivo_valor}          Set Variable                                        A data é ${lista_preco[${index}].data} e o preço ${lista_preco[${index}].preco}
+    ${arquivo_valor}          Set Variable                                       \####${lista_preco[${index}].data} ${lista_preco[${index}].preco}
     Log To Console            ${arquivo_valor}                                    
     write_variable_in_file    ${arquivo_valor}                                    
     END 
@@ -76,8 +76,8 @@ clicar menos 1 dia
 
 pesquisa de "${dias}" menos
     ${date} =	Get Current Date        result_format=datetime    exclude_millis=True 
-    write_variable_in_file            \n${date}
-    FOR                               ${range}               IN RANGE    0    ${dias} 
+    write_variable_in_file            \n${date} Destino ${FROM} até ${TO}
+    FOR                               ${range}                  IN RANGE                0    ${dias} 
     captura dos valores do grafico
     apresentacao dos valores 
     clicar menos 1 dia
