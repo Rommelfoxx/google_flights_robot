@@ -62,11 +62,11 @@ apresentacao dos valores
     #apresentação dos resultados
     ${numero_dias _consulta}    Get Text    ${CONSULTAR_TEXT_DIAS} 
 
-    Log To Console            Consulta realizada para ${numero_dias _consulta}
-    write_variable_in_file    Consulta realizada para ${numero_dias _consulta}   
+    Log To Console             ${numero_dias _consulta}
+    write_variable_in_file     ${numero_dias _consulta}   
 
     FOR                       ${index}                                            IN RANGE                                                                           0    5
-    ${arquivo_valor}          Set Variable                                       \#### ${lista_preco[${index}].data} ${lista_preco[${index}].preco}
+    ${arquivo_valor}          Set Variable                                       ${lista_preco[${index}].data} ${lista_preco[${index}].preco}
     Log To Console            ${arquivo_valor}                                    
     write_variable_in_file    ${arquivo_valor}                                    
     END 

@@ -23,7 +23,7 @@ Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}
     Input Text                       ${HOME_INPUT_SEARCH_TO}    ${to}    True
     sleep                            1
 
-    Wait Until Element Is Enabled   ${HOME_INPUT_LIST}    
+    Wait Until Element Is Enabled    ${HOME_INPUT_LIST}    
     Click Element                    ${HOME_INPUT_LIST}    
 
     Input Text    ${HOME_INPUT_SEARCH_FROM}    ${from}    True
@@ -38,13 +38,18 @@ Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}
 
     Wait Until Element Is Visible    ${HOME_INPUT_SEARCH_PARTIDA}    
     sleep                            1
-    Click Element                    ${HOME_INPUT_SEARCH_PARTIDA}    
-    Input Text                       ${HOME_INPUT_SEARCH_PARTIDA}    ${departure}  
 
-    Input Text                 ${HOME_INPUT_SEARCH_VOLTA}      ${arrival} 
+    Click Element    ${HOME_INPUT_SEARCH_PARTIDA}    
+    Sleep            1                               
+
+    Input Text                       ${HOME_INPUT_SEARCH_PARTIDA}    ${departure}
+    # Press Keys    ${HOME_INPUT_SEARCH_PARTIDA}    ${departure}    
+    Press Keys    ${HOME_INPUT_SEARCH_PARTIDA}    RETURN
+
+    # Input Text                 ${HOME_INPUT_SEARCH_VOLTA}      ${arrival}
     sleep                      1
-    Press Keys                 ${HOME_INPUT_SEARCH_VOLTA}      ${arrival}
-    Press Keys                 ${HOME_INPUT_SEARCH_VOLTA}      RETURN
+    Press Keys                 ${HOME_INPUT_SEARCH_VOLTA}    ${arrival}
+    Press Keys                 ${HOME_INPUT_SEARCH_VOLTA}    RETURN
     sleep                      1
     Click Element              ${HOME_BUTTON_CONCLUIDO}
     Capture Page Screenshot    
