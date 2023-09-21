@@ -36,7 +36,7 @@ jobs:
     - name: Run Tests
       run: |
             mkdir results
-            robot -d results -v FROM:São_Paulo -v TO:Paris -v DEPARTURE:10_fevereiro_2024 -v ARRIVAL:10_abril_2024 test-cases 
+            robot -d results -v FROM:São_Paulo -v TO:Montreal -v DEPARTURE:10_maio_2024 -v ARRIVAL:10_agosto_2024 test-cases 
     
     - name: Upload test results
       uses: actions/upload-artifact@v1
