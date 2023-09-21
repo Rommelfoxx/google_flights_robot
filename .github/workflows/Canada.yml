@@ -54,7 +54,7 @@ jobs:
     - name: send telegram message on push
       uses: appleboy/telegram-action@master
       with:
-          to: -980410394
+          to: -4007623133
           token: 6549097027:AAGZAs99MkBOgpaQLvq3V0rO-7TimDEoMw0
           message: Pesquisa de passagens realizada com sucesso! 
           message_file: valores.md
