@@ -21,22 +21,30 @@ jobs:
         sudo apt update
         sudo apt install python"$py_version"
         sudo apt install -y nodejs
+        
     - name: Verify Version
       run: |
           python --version
           nodejs -v
           npm --version
           aws --version
+          
     - name: Install libraries for robot
       run: |
           pip install -U pip
           pip install selenium==4.9.1
           pip install -r requirements.txt
+          
     - name: Run Tests
-      run: |
+      uses: nick-fields/retry@v2
+      with:
+        timeout_minutes: 10
+        max_attempts: 3
+        shell: pwsh
+        command: |
             mkdir results
             robot -d results -v FROM:São_Paulo -v TO:Paris -v DEPARTURE:10_fevereiro_2024 -v ARRIVAL:10_abril_2024 test-cases 
-    
+        
     - name: Upload test results
       uses: actions/upload-artifact@v1
       if: always()
@@ -58,14 +66,5 @@ jobs:
           message: Pesquisa de passagens realizada com sucesso! 
           message_file: valores.md
           format: markdown 
-               
-#     - name: markdown-reporter
-#       uses: PavanMudigonda/markdown-reporter@v0.1
-#       with:
-#         markdown_path: valores.md 
-#         report_name: valores.md  
-#         report_title: report 
-#         github_token: ${{ secrets.GITHUB_TOKEN }}
-#         skip_check_run: true
 
 
