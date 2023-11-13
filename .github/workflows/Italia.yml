@@ -35,7 +35,7 @@ jobs:
     - name: Run Tests
       run: |
             mkdir results
-            robot -d results -v FROM:São_Paulo -v TO:dublin -v DEPARTURE:12_novembro_2023 -v ARRIVAL:10_fevereiro_2024 test-cases 
+            robot -d results -v FROM:São_Paulo -v TO:Roma -v DEPARTURE:08_setembro_2023 -v ARRIVAL:21_setembro_2024 test-cases 
     
     - name: Upload test results
       uses: actions/upload-artifact@v1
@@ -53,7 +53,7 @@ jobs:
     - name: send telegram message on push
       uses: appleboy/telegram-action@master
       with:
-          to: -4022243374
+          to: -4088208702
           token: 6549097027:AAGZAs99MkBOgpaQLvq3V0rO-7TimDEoMw0
           message: Pesquisa de passagens realizada com sucesso! 
           message_file: valores.md
