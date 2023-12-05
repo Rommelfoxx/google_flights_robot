@@ -33,10 +33,15 @@ jobs:
           pip install -U pip
           pip install selenium==4.9.1
           pip install -r requirements.txt
+          
     - name: Run Tests
-      run: |
-            mkdir results
-            robot -d results -v FROM:São_Paulo -v TO:Toronto -v DEPARTURE:20_maio_2024 -v ARRIVAL:19_agosto_2024 test-cases 
+      uses: nick-fields/retry@v2
+      with:
+        timeout_minutes: 10
+        max_attempts: 3
+        shell: pwsh
+        command: |
+            robot -d results -v FROM:São_Paulo -v TO:Toronto -v DEPARTURE:23_março_2024 -v ARRIVAL:23_junho_2024 test-cases 
     
     - name: Upload test results
       uses: actions/upload-artifact@v1
