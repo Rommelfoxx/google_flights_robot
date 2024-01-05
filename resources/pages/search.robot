@@ -6,81 +6,76 @@ Library    OperatingSystem
 Library    DateTime
 
 *** Variables ***
-${CONSULTA_BUTTON_GRAFICO}       xpath=//*[text()='Gráfico de preços'] //..
-${GRAFICO_PRECO}                 xpath=//*[@series-id='price graph'] //child::*
-${CONSULTAR_BUTTON_MENOS_DIA}    xpath=//*[@aria-label='Reduzir a estadia em um dia']
-${CONSULTAR_TEXT_DIAS}           xpath=(//*[contains(text(),"Viagem de")])[1]
-${LISTA_NUMERO_GRAFICO}
+${SEARCH_BUTTON_GRAPHIC}        xpath=//*[text()='Gráfico de preços'] //..
+${GRAPHIC_PRICE}                xpath=//*[@series-id='price graph'] //child::*
+${SEARCH_BUTTON_LESS_DAY}       xpath=//*[@aria-label='Reduzir a estadia em um dia']
+${SEARCH_TEXT_DAY}              xpath=(//*[contains(text(),"Viagem de")])[1]
+${LIST_NUMBER_GRAPHIC}
 ${values}
-${LISTA_PRECO}    Create List    
+${LIST_PRICE}                   Create List    
 
 *** Keywords ***
-acesso grafico de preço
-    Wait Until Element Is Visible    ${CONSULTA_BUTTON_GRAFICO}    50 
-    Click Element                    ${CONSULTA_BUTTON_GRAFICO}    
+access graphic price
+    Wait Until Element Is Visible    ${SEARCH_BUTTON_GRAPHIC}    50 
+    Click Element                    ${SEARCH_BUTTON_GRAPHIC}    
 
-captura dos valores do grafico
+capture values for the graphic
     sleep                       10
     Capture Page Screenshot 
-    ${lista_numero_grafico}     Get Element Count    ${GRAFICO_PRECO} 
+    ${LIST_NUMBER_GRAPHIC}     Get Element Count    ${GRAPHIC_PRICE} 
     ${lista_objeto}             Create List          
-
-    #Lista é criada no FOR
-    FOR                              ${index}                                                IN RANGE                                                2            ${lista_numero_grafico}    7 
+    #LIST is creat in for 
+    FOR                              ${index}                                                IN RANGE                                                2            ${LIST_NUMBER_GRAPHIC}    7 
     Wait Until Element Is Enabled    (//*[@series-id='price graph'] //child::*)[${index}]
     ${data}                          Get Element Attribute                                   (//*[@series-id='price graph'] //child::*)[${index}]    data-id
     ${valor}                         Get Element Attribute                                   (//*[@series-id='price graph'] //child::*)[${index}]    data-rect
-    #Lista é organizado por indice e valor
+    #List is organized for indice and value 
     ${novoValor}                     Split String                                            ${valor}                                                ,
     ${valorFinal}                    Set Variable                                            ${novoValor[-1]} 
     ${valorFinal}                    Evaluate                                                abs(${valorFinal})
-    Run Keyword If                   ${valorFinal}==15                                       captura dos valores do grafico
-
+    Run Keyword If                   ${valorFinal}==15                                       capture values for the graphic
     ${objeto}         Create Dictionary    indice=${index}    valor=${valorFinal} 
     Append To List    ${lista_objeto}      ${objeto} 
     END
-
-    #Ordenar por menor valor lista final
+    #Order for less value in final list 
     ${lista_ordenada}                ordenar_por_valor                                                                  ${lista_objeto}                              
-    #Captura valores dos menores e data de partida e chegada
-    ${lista_preco}                   Create List                                                                        
+    #Capture less values and dates departure and arrival
+    ${LIST_PRICE}                   Create List                                                                        
     FOR                              ${index}                                                                           IN RANGE                                     0    5
-    # Log To Console    ${lista_ordenada[${index}].indice}
     Wait Until Element Is Enabled    (//*[@series-id='price graph'] //child::*)[${lista_ordenada[${index}].indice}] 
     Click Element                    (//*[@series-id='price graph'] //child::*)[${lista_ordenada[${index}].indice}] 
-    #Cria nova lista de objeto com valores finais
+    #Creat new object list with final values 
     ${preco}                         Get Text                                                                           (//*[text()="A partir de "])[1] /span        
     ${data}                          Get Text                                                                           (//*[text()="A partir de "])[1] //.. /div    
-
     ${data_preco}          Create Dictionary          preco=${preco}             data=${data}
-    Append To List         ${lista_preco}             ${data_preco} 
+    Append To List         ${LIST_PRICE}             ${data_preco} 
     END
-    Set Global Variable    ${LISTA_NUMERO_GRAFICO}    ${lista_numero_grafico}
-    Set Global Variable    ${LISTA_PRECO}             ${lista_preco} 
+    Set Global Variable    ${LIST_NUMBER_GRAPHIC}    ${LIST_NUMBER_GRAPHIC}
+    Set Global Variable    ${LIST_PRICE}             ${LIST_PRICE} 
 
-apresentacao dos valores
-    #apresentação dos resultados
-    ${numero_dias _consulta}    Get Text    ${CONSULTAR_TEXT_DIAS} 
-
+showing the values 
+    ${numero_dias _consulta}    Get Text    ${SEARCH_TEXT_DAY} 
     Log To Console             ${numero_dias _consulta}
     write_variable_in_file     ${numero_dias _consulta}   
-
     FOR                       ${index}                                            IN RANGE                                                                           0    5
-    ${arquivo_valor}          Set Variable                                       ${lista_preco[${index}].data} ${lista_preco[${index}].preco}
+    ${arquivo_valor}          Set Variable                                       ${LIST_PRICE[${index}].data} ${LIST_PRICE[${index}].preco}
     Log To Console            ${arquivo_valor}                                    
     write_variable_in_file    ${arquivo_valor}                                    
     END 
 
-clicar menos 1 dia
-    Click Element    ${CONSULTAR_BUTTON_MENOS_DIA} 
+clicking less 1 day
+    Click Element    ${SEARCH_BUTTON_LESS_DAY} 
 
-pesquisa de "${dias}" menos
+searching days less 
+#Config for total number of trip 
+    [Arguments]      ${dias}=5 
+
     ${date} =	Get Current Date        result_format=datetime    exclude_millis=True 
     write_variable_in_file            \n${date} \nDestino ${FROM} até ${TO}
     FOR                               ${range}                  IN RANGE                0    ${dias} 
-    captura dos valores do grafico
-    apresentacao dos valores 
-    clicar menos 1 dia
+    capture values for the graphic
+    showing the values  
+    clicking less 1 day
     END
 
 write_variable_in_file

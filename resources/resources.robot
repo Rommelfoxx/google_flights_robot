@@ -4,14 +4,12 @@ Library     Collections
 
 *** Variables ***
 # ${BROWSER}               Chrome
-# ${BROWSER}               chrome
-${BROWSER}               headlesschrome
+${BROWSER}               chrome
+# ${BROWSER}               headlesschrome
 ${REMOTE_TESTER_URL}     https://www.google.com/travel/flights?hl=pt-BR&curr=BRL
-
 
 *** Keywords ***
 # Abrir navegador
-
 #         ${chrome_options}=           Evaluate                             sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
 #         Call Method                  ${chrome_options}                    add_argument                                         --disable-extensions
 #         Call Method                  ${chrome_options}                    add_argument                                         --disable-gpu
@@ -32,11 +30,8 @@ ${REMOTE_TESTER_URL}     https://www.google.com/travel/flights?hl=pt-BR&curr=BRL
 #         ${options}=                  Call Method                          ${chrome_options}                                    to_capabilities                                  
 #         ${WEBDRIVER}=                Create Webdriver                     Chrome                                                desired_capabilities=${options}    
 #         Maximize Browser Window
-
-
 Abrir navegador 
-
    Open Browser    url:    ${BROWSER}
- 
-que eu tenha acessado o Google Fight 
+
+that i have accessed google fight
    Go To    ${REMOTE_TESTER_URL}
