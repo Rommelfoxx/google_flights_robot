@@ -1,4 +1,4 @@
-name: Passagens Dublin
+name: Passagens Aracaju
 
 on: 
    workflow_dispatch:
