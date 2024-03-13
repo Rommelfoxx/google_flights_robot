@@ -1,4 +1,4 @@
-name: Passagens Italia
+name: Passagens Manaus
 
 on: 
    workflow_dispatch:
@@ -40,7 +40,7 @@ jobs:
         max_attempts: 3
         shell: pwsh
         command: |
-            robot -d results -v FROM:São_Paulo -v TO:Roma -v DEPARTURE:08_setembro_2024 -v ARRIVAL:21_setembro_2024 test-cases 
+            robot -d results -v FROM:São_Paulo -v TO:Manaus -v DEPARTURE:01_julho_2024 -v ARRIVAL:25_julho_2024 test-cases 
             
     - name: Upload test results
       uses: actions/upload-artifact@v1
