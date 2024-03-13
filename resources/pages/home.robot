@@ -3,7 +3,7 @@
 
 *** Variables ***
 ${HOME_INPUT_SEARCH_TO}         xpath=//*[@placeholder='Para onde?']
-${HOME_INPUT_SEARCH_FROM}       xpath=(//*[@aria-placeholder='De onde?'] //input) [1]
+${HOME_INPUT_SEARCH_FROM}       xpath=(//*[@data-placeholder='De onde?'] //input) [1]
 ${HOME_INPUT_SEARCH_PARTIDA}    xpath=(//*[@aria-label='Partida'])[1]
 ${HOME_INPUT_LIST}              xpath=(//*[contains(text(),"Mostrando")])[1] //..
 ${HOME_INPUT_SEARCH_VOLTA}      xpath=(//*[@aria-label='Volta'])[2]

@@ -22,7 +22,8 @@ acesso grafico de preço
 captura dos valores do grafico
     sleep                       10
     Capture Page Screenshot 
-    ${lista_numero_grafico}     Get Element Count    ${GRAFICO_PRECO} 
+    # ${lista_numero_grafico}     Get Element Count    ${GRAFICO_PRECO} 
+    ${lista_numero_grafico}     Set Variable      156
     ${lista_objeto}             Create List          
 
     #Lista é criada no FOR
