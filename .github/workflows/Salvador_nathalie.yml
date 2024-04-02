@@ -42,13 +42,13 @@ jobs:
       if: always()
       with:
         name: reports
-        path: valores.md  
+        path: valores2.md  
     
     - uses: dtinth/markdown-report-action@v1.0.0
       name: create report from markdown
       with:
                title: reports
-               body-file: valores.md
+               body-file: valores2.md
                
     - name: send telegram message on push
       uses: appleboy/telegram-action@master
@@ -56,5 +56,5 @@ jobs:
           to: -980410394
           token: 6549097027:AAGZAs99MkBOgpaQLvq3V0rO-7TimDEoMw0
           message: Pesquisa de passagens realizada com sucesso! 
-          message_file: valores.md
+          message_file: valores2.md
           format: markdown 
