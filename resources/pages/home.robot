@@ -52,7 +52,7 @@ Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}
     Press Keys                 (//*[@placeholder='Volta'])[1]    ${arrival}
     Press Keys                 (//*[@placeholder='Volta'])[1]    RETURN
     sleep                      1
-    Click Element              ${HOME_BUTTON_CONCLUIDO}
+    Run Keyword And Continue On Failure    Click Element              ${HOME_BUTTON_CONCLUIDO}
     Capture Page Screenshot    
 
 é informado preço mais baixo
