@@ -48,6 +48,7 @@ Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}
 
     # Input Text                 ${HOME_INPUT_SEARCH_VOLTA}      ${arrival}
     sleep                      1
+    Click Element              (//*[@placeholder='Volta'])[1]       
     Press Keys                 (//*[@placeholder='Volta'])[1]    ${arrival}
     Press Keys                 (//*[@placeholder='Volta'])[1]    RETURN
     sleep                      1
