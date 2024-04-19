@@ -32,25 +32,21 @@ Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}
     Wait Until Element Is Enabled    ${HOME_INPUT_LIST}    20
     Click Element                    ${HOME_INPUT_LIST}    
 
-
-
     #Informação de DAta de partida e volta
-
     Wait Until Element Is Visible    ${HOME_INPUT_SEARCH_PARTIDA}    
     sleep                            1
-
     Click Element    ${HOME_INPUT_SEARCH_PARTIDA}    
     Sleep            1                               
-
     Input Text                       ${HOME_INPUT_SEARCH_PARTIDA}    ${departure}
     # Press Keys    ${HOME_INPUT_SEARCH_PARTIDA}    ${departure}    
-    Press Keys    ${HOME_INPUT_SEARCH_PARTIDA}    RETURN
+    Press Keys    ${HOME_INPUT_SEARCH_PARTIDA}    RETURN 
 
     # Input Text                 ${HOME_INPUT_SEARCH_VOLTA}      ${arrival}
-    sleep                      1
-    Click Element              (//*[@placeholder='Volta'])[1]       
-    Press Keys                 (//*[@placeholder='Volta'])[1]    ${arrival}
-    Press Keys                 (//*[@placeholder='Volta'])[1]    RETURN
+    sleep                      3
+    Click Element              (//*[@placeholder='Volta'])[1] 
+    sleep    1
+    Press Keys                  (//*[@placeholder='Volta'])[2]   ${arrival}
+    Press Keys                 (//*[@placeholder='Volta'])[2]   RETURN
     sleep                      1
     Run Keyword And Continue On Failure    Click Element              ${HOME_BUTTON_CONCLUIDO}
     Capture Page Screenshot    
@@ -60,6 +56,3 @@ Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}
     Click Element              ${HOME_BUTTON_SEARCH}    
     sleep                      1
     Capture Page Screenshot    
-
-
-
