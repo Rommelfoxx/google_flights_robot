@@ -12,7 +12,8 @@ ${CONSULTAR_BUTTON_MENOS_DIA}    xpath=//*[@aria-label='Reduzir a estadia em um 
 ${CONSULTAR_TEXT_DIAS}           xpath=(//*[contains(text(),"Viagem de")])[1]
 ${LISTA_NUMERO_GRAFICO}
 ${values}
-${LISTA_PRECO}    Create List    
+${LISTA_PRECO}              Create List    
+@{DIAS_CONSUTA_FLEXIVEL}    1              9    16    23    30    37    44    51    58    65    72    79    86    93    100    107    114    121    128
 
 *** Keywords ***
 acesso grafico de preço
@@ -22,9 +23,9 @@ acesso grafico de preço
 captura dos valores do grafico
     sleep                       10
     Capture Page Screenshot 
-    # ${lista_numero_grafico}     Get Element Count    ${GRAFICO_PRECO} 
-    ${lista_numero_grafico}     Set Variable      156
-    ${lista_objeto}             Create List          
+    # ${lista_numero_grafico}     Get Element Count    ${GRAFICO_PRECO}
+    ${lista_numero_grafico}     Set Variable    ${DIAS_CONSUTA_FLEXIVEL[13]} 
+    ${lista_objeto}             Create List     
 
     #Lista é criada no FOR
     FOR                              ${index}                                                IN RANGE                                                2            ${lista_numero_grafico}    7 
@@ -45,8 +46,7 @@ captura dos valores do grafico
     ${lista_ordenada}                ordenar_por_valor                                                                  ${lista_objeto}                              
     #Captura valores dos menores e data de partida e chegada
     ${lista_preco}                   Create List                                                                        
-    FOR                              ${index}                                                                           IN RANGE                                     0    5
-    # Log To Console    ${lista_ordenada[${index}].indice}
+    FOR                              ${index}                                                                           IN RANGE                                     0    7
     Wait Until Element Is Enabled    (//*[@series-id='price graph'] //child::*)[${lista_ordenada[${index}].indice}] 
     Click Element                    (//*[@series-id='price graph'] //child::*)[${lista_ordenada[${index}].indice}] 
     #Cria nova lista de objeto com valores finais
@@ -63,22 +63,22 @@ apresentacao dos valores
     #apresentação dos resultados
     ${numero_dias _consulta}    Get Text    ${CONSULTAR_TEXT_DIAS} 
 
-    Log To Console             ${numero_dias _consulta}
-    write_variable_in_file     ${numero_dias _consulta}   
+    Log To Console            ${numero_dias _consulta}
+    write_variable_in_file    ${numero_dias _consulta}    
 
-    FOR                       ${index}                                            IN RANGE                                                                           0    5
-    ${arquivo_valor}          Set Variable                                       ${lista_preco[${index}].data} ${lista_preco[${index}].preco}
-    Log To Console            ${arquivo_valor}                                    
-    write_variable_in_file    ${arquivo_valor}                                    
+    FOR                       ${index}            IN RANGE                                                        0    7
+    ${arquivo_valor}          Set Variable        ${lista_preco[${index}].data} ${lista_preco[${index}].preco}
+    Log To Console            ${arquivo_valor}    
+    write_variable_in_file    ${arquivo_valor}    
     END 
 
 clicar menos 1 dia
     Click Element    ${CONSULTAR_BUTTON_MENOS_DIA} 
 
 pesquisa de "${dias}" menos
-    ${date} =	Get Current Date        result_format=datetime    exclude_millis=True 
+    ${date} =	Get Current Date        result_format=datetime                   exclude_millis=True 
     write_variable_in_file            \n${date} \nDestino ${FROM} até ${TO}
-    FOR                               ${range}                  IN RANGE                0    ${dias} 
+    FOR                               ${range}                                 IN RANGE                0    ${dias} 
     captura dos valores do grafico
     apresentacao dos valores 
     clicar menos 1 dia
@@ -87,4 +87,3 @@ pesquisa de "${dias}" menos
 write_variable_in_file
     [Arguments]       ${variable}
     Append To File    ${EXECDIR}/valores2.md    \n${variable}
-
