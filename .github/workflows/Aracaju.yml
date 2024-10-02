@@ -43,7 +43,7 @@ jobs:
             robot -d results -v FROM:São_Paulo -v TO:buenos_aires -v DEPARTURE:21_dezembro_2024 -v ARRIVAL:05_janeiro_2025 test-cases 
              
     - name: Upload test results
-      uses: actions/upload-artifact@v1
+      uses:  actions/upload-artifact@v3.2.1-node20
       if: always()
       with:
         name: reports
