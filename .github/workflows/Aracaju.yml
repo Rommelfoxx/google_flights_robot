@@ -29,9 +29,9 @@ jobs:
           aws --version
     - name: Install libraries for robot
       run: |
-          pip install -U pip --break-system-packages
-          pip install selenium==4.9.1 --break-system-packages
-          pip install -r requirements.txt --break-system-packages
+          pip install -U pip 
+          pip install selenium==4.9.1 
+          pip install -r requirements.txt 
           
     - name: Run Tests
       uses: nick-fields/retry@v2
