@@ -43,7 +43,7 @@ jobs:
             robot -d results -v FROM:São_Paulo -v TO:Paris -v DEPARTURE:01_setembro_2025 -v ARRIVAL:17_novembro_2024 test-cases 
             
     - name: Upload test results
-      uses: actions/upload-artifact@v1
+      uses:  actions/upload-artifact@v3.2.1-node20
       if: always()
       with:
         name: reports
@@ -63,5 +63,3 @@ jobs:
           message: Pesquisa de passagens realizada com sucesso! 
           message_file: valores2.md
           format: markdown 
-
-
