@@ -62,5 +62,5 @@ jobs:
           token: 6549097027:AAGZAs99MkBOgpaQLvq3V0rO-7TimDEoMw0
           message: Pesquisa de passagens realizada com sucesso! 
           message_file: valores2.md
-          parse_mode: "Markdown"
-          format: markdown 
+          parse_mode: None
+          format: None 
