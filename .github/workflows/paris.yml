@@ -1,4 +1,4 @@
-name: Passagens Buenos aires
+name: Passagens PAris
 
 on: 
    workflow_dispatch:
