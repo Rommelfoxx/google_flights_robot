@@ -16,7 +16,7 @@ git clone https://github.com/Rommelfoxx/google_fight.git
 
 The information for the flights is in the command execution.
 
-Exemple:
+Example:
 robot -d results -v FROM:São_Paulo -v TO:Roma -v DEPARTURE:08_setembro_2024 -v ARRIVAL:21_setembro_2024 -v DIAS:2 -v AMPLITUDE:Total   test-cases 
 
 <b>FROM</b>: - Location DEPARTURE
