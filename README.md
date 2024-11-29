@@ -76,7 +76,7 @@ jobs:
         max_attempts: 3
         shell: pwsh
         command: |
-            robot -d results -v FROM:São_Paulo -v TO:Toronto -v DEPARTURE:23_março_2024 -v ARRIVAL:23_junho_2024 test-cases 
+            robot -d results -v FROM:São_Paulo -v TO:Roma -v DEPARTURE:08_setembro_2024 -v ARRIVAL:21_setembro_2024 -v DIAS:2 -v AMPLITUDE:Total   test-cases 
     
     - name: Upload test results
       uses: actions/upload-artifact@v1
@@ -94,10 +94,11 @@ jobs:
     - name: send telegram message on push
       uses: appleboy/telegram-action@master
       with:
-          to: -4007623133
-          token: 6549097027:AAGZAs99MkBOgpaQLvq3V0rO-7TimDEoMw0
+          to: -402224****
+          token: 6549097027:AA*****MkBOgpaQLvq3V0rO-7******
           message: Pesquisa de passagens realizada com sucesso! 
-          message_file: valores.md
-          format: markdown 
+          message_file: valores2.md
+          parse_mode: None
+          format: None 
 
 ------------------------------------------------------------------------------------------------------------------------------
