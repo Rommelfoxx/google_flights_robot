@@ -13,17 +13,15 @@ ${CONSULTAR_TEXT_DIAS}           xpath=(//*[contains(text(),"Viagem de")])[1]
 ${LISTA_NUMERO_GRAFICO}
 ${values}
 ${LISTA_PRECO}              Create List    
-@{DIAS_CONSUTA_FLEXIVEL}    1     9    16    23    30    37    44    51    58    65    72    79    86    93    100    107    114    121    128    135    142    149    156   163    170    177    184    191   198    205    212    219    226   233   240    247    254    261    268     275   282   289    296    303    310    317    324      331    
-
-
-
+@{DIAS_CONSUTA_FLEXIVEL}    1     9    16    23    30    37    44    51    58    65    72    79    86    93    100    107    114    121    128    135    142    149    156   163    170    177    184    191   198    205    212    219    226   233   240    247    254    261    268     275   282   289    296    303    310    317    324   331   338   345    352    359    366   373   380  387   394    401
+ 
 
 *** Keywords ***
 acesso grafico de preço
     Wait Until Element Is Visible    ${CONSULTA_BUTTON_GRAFICO}    50 
     Click Element                    ${CONSULTA_BUTTON_GRAFICO}    
 
-captura dos valores do grafico
+captura dos valores do grafico     
      [Arguments]    ${comeco}=128     ${fim}=37
     sleep                       10
     Capture Page Screenshot 
@@ -83,7 +81,11 @@ pesquisa de "${dias}" menos
     ${date} =	Get Current Date        result_format=datetime                   exclude_millis=True 
     write_variable_in_file            \n${date} \nDestino ${FROM} até ${TO}
     FOR                               ${range}                                 IN RANGE                0    ${dias} 
-    captura dos valores do grafico
+    Run Keyword If  '${AMPLITUDE}' == ''        captura dos valores do grafico 
+    Run Keyword If  '${AMPLITUDE}' == 'medio'   captura dos valores do grafico     142     34
+    Run Keyword If  '${AMPLITUDE}' == 'baixo'   captura dos valores do grafico     2       27
+    Run Keyword If  '${AMPLITUDE}' == 'alto'    captura dos valores do grafico     205     55
+    Run Keyword If  '${AMPLITUDE}' == 'total'   captura dos valores do grafico     2       55
     apresentacao dos valores 
     clicar menos 1 dia
     END

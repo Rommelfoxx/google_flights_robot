@@ -10,7 +10,8 @@ ${TO}
 ${FROM}
 ${DEPARTURE}
 ${ARRIVAL}
-
+${DIAS}     5
+${AMPLITUDE}    
 
 *** Test Cases ***
 
@@ -23,5 +24,5 @@ Cenario 1 - Procura de preços de voos
    acesso grafico de preço
 
    #Então 
-   pesquisa de "5" menos 
+   pesquisa de "${DIAS}" menos 
 
