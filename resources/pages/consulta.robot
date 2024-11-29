@@ -13,7 +13,10 @@ ${CONSULTAR_TEXT_DIAS}           xpath=(//*[contains(text(),"Viagem de")])[1]
 ${LISTA_NUMERO_GRAFICO}
 ${values}
 ${LISTA_PRECO}              Create List    
-@{DIAS_CONSUTA_FLEXIVEL}    1              9    16    23    30    37    44    51    58    65    72    79    86    93    100    107    114    121    128
+@{DIAS_CONSUTA_FLEXIVEL}    1     9    16    23    30    37    44    51    58    65    72    79    86    93    100    107    114    121    128    135    142    149    156   163    170    177    184    191   198    205    212    219    226   233   240    247    254    261    268     275   282   289    296    303    310    317    324      331    
+
+
+
 
 *** Keywords ***
 acesso grafico de preço
@@ -21,14 +24,15 @@ acesso grafico de preço
     Click Element                    ${CONSULTA_BUTTON_GRAFICO}    
 
 captura dos valores do grafico
+     [Arguments]    ${comeco}=128     ${fim}=37
     sleep                       10
     Capture Page Screenshot 
     # ${lista_numero_grafico}     Get Element Count    ${GRAFICO_PRECO}
-    ${lista_numero_grafico}     Set Variable    ${DIAS_CONSUTA_FLEXIVEL[13]} 
+    ${lista_numero_grafico}     Set Variable    ${DIAS_CONSUTA_FLEXIVEL[${fim}]} 
     ${lista_objeto}             Create List     
 
     #Lista é criada no FOR
-    FOR                              ${index}                                                IN RANGE                                                2            ${lista_numero_grafico}    7 
+    FOR                              ${index}                                                IN RANGE                                                 ${comeco}           ${lista_numero_grafico}    7 
     Wait Until Element Is Enabled    (//*[@series-id='price graph'] //child::*)[${index}]
     ${data}                          Get Element Attribute                                   (//*[@series-id='price graph'] //child::*)[${index}]    data-id
     ${valor}                         Get Element Attribute                                   (//*[@series-id='price graph'] //child::*)[${index}]    data-rect
