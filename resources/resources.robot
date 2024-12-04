@@ -5,7 +5,7 @@ Library     Collections
 *** Variables ***
 # ${BROWSER}               Chrome
 # ${BROWSER}               chrome
-${BROWSER}               headlesschrome
+${BROWSER}               chrome
 ${REMOTE_TESTER_URL}     https://www.google.com/travel/flights?hl=pt-BR&curr=BRL
 
 

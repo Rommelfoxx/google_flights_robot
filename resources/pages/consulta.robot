@@ -83,7 +83,7 @@ pesquisa de "${dias}" menos
     FOR                               ${range}                                 IN RANGE                0    ${dias} 
     Run Keyword If  '${AMPLITUDE}' == ''        captura dos valores do grafico 
     Run Keyword If  '${AMPLITUDE}' == 'medio'   captura dos valores do grafico     142     34
-    Run Keyword If  '${AMPLITUDE}' == 'baixo'   captura dos valores do grafico     2       27
+    Run Keyword If  '${AMPLITUDE}' == 'baixo'   captura dos valores do grafico     2       22
     Run Keyword If  '${AMPLITUDE}' == 'alto'    captura dos valores do grafico     205     55
     Run Keyword If  '${AMPLITUDE}' == 'total'   captura dos valores do grafico     2       55
     apresentacao dos valores 

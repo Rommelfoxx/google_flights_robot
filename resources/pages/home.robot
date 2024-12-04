@@ -16,10 +16,12 @@ ${HOME_BUTTON_CONCLUIDO}        xpath=(//*[text()='Concluído'])[4]
 
 *** Keywords ***
 
-Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}" "${arrival}"
-
+Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}" "${arrival}" 
+    [Arguments]  "${TYPE}"= "ROUND TRIP"
+     
     Set Window Size                  1200                       800
     Wait Until Element Is Visible    ${HOME_INPUT_SEARCH_TO}
+    Run Keyword If  '${TYPE}' == 'ONE WAY'  change the type of ticket 
     Input Text                       ${HOME_INPUT_SEARCH_TO}    ${to}    True
     sleep                            1
 
@@ -56,3 +58,11 @@ Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}
     Click Element              ${HOME_BUTTON_SEARCH}    
     sleep                      1
     Capture Page Screenshot    
+
+
+#Change the type of ticket "ROUND TRIP" or "ONE WAY"
+change the type of ticket 
+    Click Element      //*[text()="Round trip"]
+    Click Element      //*[text()="One way"]
+    sleep                      1
+    
