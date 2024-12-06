@@ -10,8 +10,9 @@ ${TO}
 ${FROM}
 ${DEPARTURE}
 ${ARRIVAL}
-${DIAS}     5
+${DIAS}     1
 ${AMPLITUDE}    
+${TYPE}    ROUND
 
 *** Test Cases ***
 
@@ -19,7 +20,7 @@ Cenario 1 - Procura de preços de voos
    #Dado 
    que eu tenha acessado o Google Fight 
    #Quando 
-   Consultar informações de voo de "${FROM}" para "${TO}" nas datas "${DEPARTURE}" "${ARRIVAL}" 
+   Consultar informações de voo de para as datas   ${FROM}  ${TO}  ${DEPARTURE}  ${ARRIVAL}   ${TYPE}
    é informado preço mais baixo 
    acesso grafico de preço
 

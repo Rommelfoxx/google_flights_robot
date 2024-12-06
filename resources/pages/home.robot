@@ -16,12 +16,13 @@ ${HOME_BUTTON_CONCLUIDO}        xpath=(//*[text()='Concluído'])[4]
 
 *** Keywords ***
 
-Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}" "${arrival}" 
-    [Arguments]  "${TYPE}"= "ROUND TRIP"
+Consultar informações de voo de para as datas 
+    [Arguments]     ${from}    ${to}   ${departure}     ${arrival}="1_março_2024"   ${type}= "ROUND"
      
     Set Window Size                  1200                       800
     Wait Until Element Is Visible    ${HOME_INPUT_SEARCH_TO}
-    Run Keyword If  '${TYPE}' == 'ONE WAY'  change the type of ticket 
+
+    Run Keyword If  '${type}' == 'ONE'  change the type of ticket 
     Input Text                       ${HOME_INPUT_SEARCH_TO}    ${to}    True
     sleep                            1
 
@@ -42,14 +43,10 @@ Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}
     Input Text                       ${HOME_INPUT_SEARCH_PARTIDA}    ${departure}
     # Press Keys    ${HOME_INPUT_SEARCH_PARTIDA}    ${departure}    
     Press Keys    ${HOME_INPUT_SEARCH_PARTIDA}    RETURN 
+    
+    #insert return dates only for Round trip  
+    Run Keyword If  '${type}' == 'ROUND'  Insert return date 
 
-    # Input Text                 ${HOME_INPUT_SEARCH_VOLTA}      ${arrival}
-    sleep                      3
-    Click Element              (//*[@placeholder='Volta'])[1] 
-    sleep    1
-    Press Keys                  (//*[@placeholder='Volta'])[2]   ${arrival}
-    Press Keys                 (//*[@placeholder='Volta'])[2]   RETURN
-    sleep                      1
     Run Keyword And Continue On Failure    Click Element              ${HOME_BUTTON_CONCLUIDO}
     Capture Page Screenshot    
 
@@ -62,7 +59,18 @@ Consultar informações de voo de "${from}" para "${to}" nas datas "${departure}
 
 #Change the type of ticket "ROUND TRIP" or "ONE WAY"
 change the type of ticket 
-    Click Element      //*[text()="Round trip"]
-    Click Element      //*[text()="One way"]
+    Wait Until Element Is Visible      (//*[@role="combobox"])[1]
+    Click Element      (//*[@role="combobox"])[1]
+    Wait Until Element Is Visible   (//*[@role="option"])[2]
+    Click Element     (//*[@role="option"])[2]
     sleep                      1
     
+
+Insert return date 
+    # Input Text                 ${HOME_INPUT_SEARCH_VOLTA}      ${arrival}
+    sleep                      3
+    Click Element              (//*[@placeholder='Volta'])[1] 
+    sleep    1
+    Press Keys                  (//*[@placeholder='Volta'])[2]   ${arrival}
+    Press Keys                 (//*[@placeholder='Volta'])[2]   RETURN
+    sleep                      1

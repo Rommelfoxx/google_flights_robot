@@ -9,7 +9,7 @@ Library    DateTime
 ${CONSULTA_BUTTON_GRAFICO}       xpath=//*[text()='Gráfico de preços'] //..
 ${GRAFICO_PRECO}                 xpath=//*[@series-id='price graph'] //child::*
 ${CONSULTAR_BUTTON_MENOS_DIA}    xpath=//*[@aria-label='Reduzir a estadia em um dia']
-${CONSULTAR_TEXT_DIAS}           xpath=(//*[contains(text(),"Viagem de")])[1]
+${CONSULTAR_TEXT_DIAS}           xpath=(//*[contains(text(),"Viagem")])[1]
 ${LISTA_NUMERO_GRAFICO}
 ${values}
 ${LISTA_PRECO}              Create List    
@@ -63,6 +63,7 @@ captura dos valores do grafico
 
 apresentacao dos valores
     #apresentação dos resultados
+    Wait Until Element Is Visible           ${CONSULTAR_TEXT_DIAS} 
     ${numero_dias _consulta}    Get Text    ${CONSULTAR_TEXT_DIAS} 
 
     Log To Console            ${numero_dias _consulta}
@@ -83,11 +84,11 @@ pesquisa de "${dias}" menos
     FOR                               ${range}                                 IN RANGE                0    ${dias} 
     Run Keyword If  '${AMPLITUDE}' == ''        captura dos valores do grafico 
     Run Keyword If  '${AMPLITUDE}' == 'medio'   captura dos valores do grafico     142     34
-    Run Keyword If  '${AMPLITUDE}' == 'baixo'   captura dos valores do grafico     2       22
+    Run Keyword If  '${AMPLITUDE}' == 'baixo'   captura dos valores do grafico     23      22
     Run Keyword If  '${AMPLITUDE}' == 'alto'    captura dos valores do grafico     205     55
     Run Keyword If  '${AMPLITUDE}' == 'total'   captura dos valores do grafico     2       55
     apresentacao dos valores 
-    clicar menos 1 dia
+    Run Keyword If  '${TYPE}' == 'ROUND'    clicar menos 1 dia
     END
 
 write_variable_in_file
