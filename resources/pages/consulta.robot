@@ -87,7 +87,7 @@ pesquisa de "${dias}" menos
     Run Keyword If  '${AMPLITUDE}' == 'alto'          captura dos valores do grafico     205     55
     Run Keyword If  '${AMPLITUDE}' == 'medio'         captura dos valores do grafico     142     34
     Run Keyword If  '${AMPLITUDE}' == 'baixo_medio'   captura dos valores do grafico     51      18
-    Run Keyword If  '${AMPLITUDE}' == 'baixo'         captura dos valores do grafico     1       22
+    Run Keyword If  '${AMPLITUDE}' == 'baixo'         captura dos valores do grafico     2       22
     
     apresentacao dos valores 
     Run Keyword If  '${TYPE}' == 'ROUND'    clicar menos 1 dia
