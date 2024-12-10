@@ -5,7 +5,7 @@
 ${HOME_INPUT_SEARCH_TO}         xpath=//*[@placeholder='Para onde?']
 ${HOME_INPUT_SEARCH_FROM}       xpath=(//*[@data-placeholder='De onde?'] //input) [1]
 ${HOME_INPUT_SEARCH_PARTIDA}    xpath=(//*[@aria-label='Partida'])[1]
-${HOME_INPUT_LIST}              xpath=(//*[contains(text(),"Mostrando")])[1] //..
+${HOME_INPUT_LIST}              xpath=(//*[@role="listbox"] //li)[8]
 ${HOME_INPUT_SEARCH_VOLTA}      xpath=(//*[@aria-label='Volta'])[2]
 ${HOME_BUTTON_SEARCH}           xpath=//*[@aria-label='Pesquisar']
 ${HOME_BUTTON_CONCLUIDO}        xpath=(//*[text()='Concluído'])[4]
