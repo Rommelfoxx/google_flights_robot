@@ -40,7 +40,7 @@ jobs:
         max_attempts: 3
         shell: pwsh
         command: |
-            robot -d results -v FROM:São_Paulo_CONG -v TO:salvador_brasil -v DEPARTURE:25_janeiro_2025 -v ARRIVAL:7_fevereiro_2025 -v DIAS:5 -v AMPLITUDE:baixo  test-cases 
+            robot -d results -v FROM:São_Paulo_CO -v TO:salvador_brasil -v DEPARTURE:25_janeiro_2025 -v ARRIVAL:7_fevereiro_2025 -v DIAS:5 -v AMPLITUDE:baixo  test-cases 
             
     - name: Upload test results
       uses:  actions/upload-artifact@v3.2.1-node20
