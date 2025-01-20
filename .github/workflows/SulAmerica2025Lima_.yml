@@ -1,4 +1,4 @@
-name: Passagens SulAmerica2025
+name: Passagens SulAmerica2025_Lima
 
 on: 
    workflow_dispatch:
