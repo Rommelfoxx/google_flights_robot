@@ -43,7 +43,7 @@ jobs:
             robot -d results -v FROM:São_Paulo_CO -v TO:belem_brasil -v DEPARTURE:1_março_2025 -v ARRIVAL:20_março_2025 -v DIAS:5 -v AMPLITUDE:alto  test-cases 
             
     - name: Upload test results
-      uses:  actions/upload-artifact@v4-node20
+      uses:  actions/upload-artifact@v4.6.0
       if: always()
       with:
         name: reports
