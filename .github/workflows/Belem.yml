@@ -1,4 +1,4 @@
-name: Passagens Belem
+name: Passagens Belem Congonhas
 
 on: 
    workflow_dispatch:
