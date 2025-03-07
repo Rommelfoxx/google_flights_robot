@@ -1,4 +1,4 @@
-name: Passagens SulAmerica2025_LaPaz
+name: Passagens Belem Guarulhos-Geral
 
 on: 
    workflow_dispatch:
@@ -29,9 +29,9 @@ jobs:
           aws --version
     - name: Install libraries for robot
       run: |
-          pip install -U pip 
-          pip install selenium==4.9.1 
-          pip install -r requirements.txt 
+          pip install -U pip
+          pip install selenium==4.9.1
+          pip install -r requirements.txt
           
     - name: Run Tests
       uses: nick-fields/retry@v2
@@ -40,8 +40,8 @@ jobs:
         max_attempts: 3
         shell: pwsh
         command: |
-           robot -d results -v FROM:São_Paulo -v TO:La_PAZ -v DEPARTURE:01_Novembro_2025 -v TYPE:ONE -v AMPLITUDE:alto test-cases 
-             
+            robot -d results -v FROM:São_Paulo -v TO:belem_brasil -v DEPARTURE:19_junho_2025 -v ARRIVAL:22_julho_2025 -v DIAS:5 -v AMPLITUDE:alto  test-cases 
+            
     - name: Upload test results
       uses:  actions/upload-artifact@v4.6.0
       if: always()
@@ -58,7 +58,7 @@ jobs:
     - name: send telegram message on push
       uses: appleboy/telegram-action@master
       with:
-          to: -4740893006
+          to: -4022243374
           token: 6549097027:AAGZAs99MkBOgpaQLvq3V0rO-7TimDEoMw0
           message: Pesquisa de passagens realizada com sucesso! 
           message_file: valores2.md
