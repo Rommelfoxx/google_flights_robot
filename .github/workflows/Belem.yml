@@ -1,4 +1,4 @@
-name: Passagens Belem Congonhas
+name: Passagens São Paulo - Belem 
 
 on: 
    workflow_dispatch:
