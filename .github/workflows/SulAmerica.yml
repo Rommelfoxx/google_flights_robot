@@ -40,7 +40,7 @@ jobs:
         max_attempts: 3
         shell: pwsh
         command: |
-            robot -d results -v FROM:São_Paulo -v TO:belem_brasil -v DEPARTURE:10_JUNHO_2026 -v ARRIVAL:17_JUNHO_2026 -v DIAS:2 -v AMPLITUDE:baixo  test-cases 
+            robot -d results -v FROM:São_Paulo -v TO:belem_brasil -v DEPARTURE:27_JUNHO_2026 -v ARRIVAL:07_JULHO_2026 -v DIAS:2 -v AMPLITUDE:baixo  test-cases 
             
     - name: Upload test results
       uses:  actions/upload-artifact@v4.6.0
