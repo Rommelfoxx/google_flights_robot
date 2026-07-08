@@ -1,4 +1,4 @@
-name: Passagens Belem Guarulhos-Geral
+name: Passagens Minas Gerais 
 
 on: 
    workflow_dispatch:
