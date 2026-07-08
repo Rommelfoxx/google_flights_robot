@@ -1,4 +1,5 @@
-name: Passagens Minas gerais
+name: Passagens Belem Guarulhos-Geral
+
 on: 
    workflow_dispatch:
    schedule:
@@ -28,9 +29,9 @@ jobs:
           aws --version
     - name: Install libraries for robot
       run: |
-          pip install -U pip 
-          pip install selenium==4.9.1 
-          pip install -r requirements.txt 
+          pip install -U pip
+          pip install selenium==4.9.1
+          pip install -r requirements.txt
           
     - name: Run Tests
       uses: nick-fields/retry@v2
@@ -39,10 +40,10 @@ jobs:
         max_attempts: 3
         shell: pwsh
         command: |
-            robot -d results -v FROM:São_Paulo -v TO:belo_horizonte -v DEPARTURE:06_agosto_2026 -v ARRIVAL:09_agosto_2026 test-cases 
-             
+            robot -d results -v FROM:São_Paulo -v TO:belo_horizonte -v DEPARTURE:06_agosto_2026 -v ARRIVAL:09_agosto_2026 -v DIAS:1 -v AMPLITUDE:baixo  test-cases 
+            
     - name: Upload test results
-      uses:  actions/upload-artifact@v3.2.1-node20
+      uses:  actions/upload-artifact@v4.6.0
       if: always()
       with:
         name: reports
@@ -57,9 +58,9 @@ jobs:
     - name: send telegram message on push
       uses: appleboy/telegram-action@master
       with:
-          to: -4022243374
-          token: 6549097027:AAGZAs99MkBOgpaQLvq3V0rO-7TimDEoMw0
+          to: ${{ secrets.TELEGRAM_CHAT_ID_VAN }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: Pesquisa de passagens realizada com sucesso! 
           message_file: valores2.md
-          parse_mode: "Markdown"
-          format: markdown 
+          parse_mode: None
+          format: None 
